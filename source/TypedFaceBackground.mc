@@ -1,29 +1,44 @@
-//
-// Copyright 2015-2021 by Garmin Ltd. or its subsidiaries.
-// Subject to Garmin SDK License Agreement and Wearables
-// Application Developer Agreement.
-//
 import Toybox.WatchUi;
-import Toybox.Application;
 import Toybox.Graphics;
 
-//! Drawable to update the background
 class Background extends WatchUi.Drawable {
 
-    //! Constructor
     function initialize() {
-        var dictionary = {
+        Drawable.initialize({
             :identifier => "Background"
-        };
-
-        Drawable.initialize(dictionary);
+        });
     }
 
-    //! Draws the background
     function draw(dc as Dc) as Void {
-        // Set the background color then call to clear the screen
-        dc.setColor(Graphics.COLOR_TRANSPARENT, Application.getApp().getProperty("BackgroundColor"));
+        var width = dc.getWidth();
+        var height = dc.getHeight();
+
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
+
+        drawOuterRing(dc, width, height);
+        drawCenterGuide(dc, width, height);
     }
 
+    private function drawOuterRing(dc as Dc, width as Number, height as Number) as Void {
+        var cx = width / 2;
+        var cy = height / 2;
+        var radius = (width < height ? width : height) / 2 - 24;
+
+        dc.setColor(0xFF8A00, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(5);
+        dc.drawCircle(cx, cy, radius);
+
+        dc.setColor(0x2A2A2A, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(1);
+        dc.drawCircle(cx, cy, radius + 12);
+    }
+
+    private function drawCenterGuide(dc as Dc, width as Number, height as Number) as Void {
+        var cx = width / 2;
+
+        dc.setColor(0xFF8A00, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(3);
+        dc.drawLine(cx - 10, 32, cx + 10, 32);
+    }
 }

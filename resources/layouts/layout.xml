@@ -2,18 +2,18 @@
     <drawable class="Background" />
 
     <drawable id="Complication1" class="Complicated.ComplicationDrawable">
-        <param name="locX">dc.getWidth() / 2</param>
-        <param name="locY">dc.getHeight() * .18</param>
+        <param name="locX">center</param>
+        <param name="locY">75</param>
     </drawable>
 
     <drawable id="Complication2" class="Complicated.ComplicationDrawable">
-        <param name="locX">dc.getWidth() * .20</param>
-        <param name="locY">dc.getHeight() * .68</param>
+        <param name="locX">83</param>
+        <param name="locY">283</param>
     </drawable>
 
     <drawable id="Complication3" class="Complicated.ComplicationDrawable">
-        <param name="locX">dc.getWidth() * .80</param>
-        <param name="locY">dc.getHeight() * .68</param>
+        <param name="locX">333</param>
+        <param name="locY">283</param>
     </drawable>
 
     <label id="TimeLabel"
