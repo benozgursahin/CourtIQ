@@ -1,0 +1,7 @@
+gen/
+external-mir/
+*.prg
+*.zip
+*.iq
+*.log
+.DS_Store
